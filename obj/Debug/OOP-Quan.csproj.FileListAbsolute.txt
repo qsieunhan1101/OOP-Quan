@@ -1,0 +1,8 @@
+C:\C#_Project\OOP-Quan\OOP-Quan\bin\Debug\OOP-Quan.exe.config
+C:\C#_Project\OOP-Quan\OOP-Quan\bin\Debug\OOP-Quan.exe
+C:\C#_Project\OOP-Quan\OOP-Quan\bin\Debug\OOP-Quan.pdb
+C:\C#_Project\OOP-Quan\OOP-Quan\obj\Debug\OOP-Quan.csproj.AssemblyReference.cache
+C:\C#_Project\OOP-Quan\OOP-Quan\obj\Debug\OOP-Quan.csproj.SuggestedBindingRedirects.cache
+C:\C#_Project\OOP-Quan\OOP-Quan\obj\Debug\OOP-Quan.csproj.CoreCompileInputs.cache
+C:\C#_Project\OOP-Quan\OOP-Quan\obj\Debug\OOP-Quan.exe
+C:\C#_Project\OOP-Quan\OOP-Quan\obj\Debug\OOP-Quan.pdb
