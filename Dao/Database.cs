@@ -29,7 +29,7 @@ namespace OOP_Quan.Dao
         }
         public List<IEntity> selectTable(string name, object where)
         {
-            List<IEntity> entities = null;
+            List<IEntity> entities = new List<IEntity>();
             switch (name)
             {
                 case "product":
@@ -37,24 +37,24 @@ namespace OOP_Quan.Dao
                     foreach (IEntity entity in productTable)
                     {
                         entities.Add(entity);
-                        Console.WriteLine("da lay bang product");
                     }
+                    Console.WriteLine("da lay bang product");
                     break;
                 case "category":
                     foreach (IEntity entity in categotyTable)
                     {
                         entities.Add(entity);
-                        Console.WriteLine("da lay bang category");
 
                     }
+                    Console.WriteLine("da lay bang category");
                     break;
                 case "accessory":
                     foreach (IEntity entity in accessoryTable)
                     {
                         entities.Add(entity);
-                        Console.WriteLine("da lay bang accessory");
 
                     }
+                    Console.WriteLine("da lay bang accessory");
                     break;
             }
             return entities;
@@ -65,7 +65,7 @@ namespace OOP_Quan.Dao
             {
                 case "product":
                     Product tableProduct = row as Product;
-                    for (int i = 0; i< productTable.Count - 1; i++)
+                    for (int i = 0; i < productTable.Count - 1; i++)
                     {
                         if (productTable[i].id == tableProduct.id)
                         {
@@ -96,7 +96,58 @@ namespace OOP_Quan.Dao
                     break;
             }
         }
-        public void deleteTable(string name, object row) { }
-        public void truncateTable(string name) { }
+        public void deleteTable(string name, object row)
+        {
+            switch (name)
+            {
+                case "product":
+
+                    Product tableProduct = row as Product;
+                    for (int i = 0; i < productTable.Count - 1; i++)
+                    {
+                        if (productTable[i].id == tableProduct.id)
+                        {
+                            productTable.RemoveAt(i);
+                        }
+                    }
+                    break;
+                case "category":
+                    Category tableCategory = row as Category;
+                    for (int i = 0; i < categotyTable.Count - 1; i++)
+                    {
+                        if (categotyTable[i].id == tableCategory.id)
+                        {
+                            categotyTable.RemoveAt(i);
+                        }
+                    }
+                    break;
+                case "accessory":
+                    Accessotion tableAccess = row as Accessotion;
+                    for (int i = 0; i < productTable.Count - 1; i++)
+                    {
+                        if (accessoryTable[i].id == tableAccess.id)
+                        {
+                            accessoryTable.RemoveAt(i);
+                        }
+                    }
+                    break;
+            }
+
+        }
+        public void truncateTable(string name)
+        {
+            switch (name)
+            {
+                case "product":
+                    productTable.Clear();
+                    break;
+                case "category":
+                    categotyTable.Clear();
+                    break;
+                case "accessory":
+                    accessoryTable.Clear();
+                    break;
+            }
+        }
     }
 }
