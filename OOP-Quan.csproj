@@ -43,14 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\Database.cs" />
     <Compile Include="Demo\DatabaseDemo.cs" />
     <Compile Include="Demo\ProductDemo.cs" />
     <Compile Include="Entity\Accessotion.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\EntityEnum.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="IEntity.cs" />
-    <Compile Include="Program.cs" />
+    <None Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

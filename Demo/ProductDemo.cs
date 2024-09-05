@@ -1,29 +1,27 @@
-﻿using OOP_Quan.Entity;
+﻿using OOP_Quan;
 using System;
 
 namespace OOP_Quan.Demo
 {
     internal class ProductDemo
     {
-
-        public Product createProductTest()
+        
+/*        public static void Main(string[] args)
         {
-            Product p = new Product();
-/*            int id = System.Int32.Parse(Console.ReadLine());
-            string name = Console.ReadLine();
-            int category = System.Int32.Parse(Console.ReadLine());
-            p.id = id;
-            p.name = name;
-            p.categoryId = category;*/
-
-            return p;
-
+            Product product = createProductTest();
+            printProduct(product);
+        }*/
+        public static Product createProductTest()
+        {
+            Product product = new Product(10, "pro 1", 15);
+            return product;
         }
+
         public void printProduct(Product product)
         {
-            Console.WriteLine("id: "+product.id);
-            Console.WriteLine(product.name);
-            Console.WriteLine("category: " + product.categoryId + "\n");
+            Console.WriteLine("Id:" + product.Id);
+            Console.WriteLine("Name:" + product.Name);
+            Console.WriteLine("CategoryId:" + product.CategoryId);
         }
     }
 }

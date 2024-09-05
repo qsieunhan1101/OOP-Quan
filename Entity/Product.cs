@@ -1,33 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Quan
+﻿namespace OOP_Quan
 {
     internal class Product : IEntity
     {
-        
-        public int id;
-        public string name;
-        public int categoryId;
 
-        public Product() { }
-        public Product(int id, int categoryId)
-        {
-            this.id = id;
-            this.categoryId = categoryId;
-            name = "product";
-        }
+        private int id;
+        private string name;
+        private int categoryId;
 
-        public int getId()
+        public int Id { get { return id; } set { id = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public int CategoryId { get { return categoryId; } set { categoryId = value; } }
+
+        public Product(int id, string name, int categotuId)
         {
-            return id;
-        }
-        public void setId(int id)
-        {
-            this.id = id;
+            Id = id;
+            Name = name;
+            CategoryId = categotuId;
         }
     }
 }

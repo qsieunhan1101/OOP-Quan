@@ -1,152 +1,73 @@
 ﻿using OOP_Quan.Entity;
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace OOP_Quan.Dao
 {
-    internal class Database
+    public class Database
     {
-
-        private List<Product> productTable = new List<Product>();
-        private List<Category> categotyTable = new List<Category>();
-        private List<Accessotion> accessoryTable = new List<Accessotion>();
-        private Database instants;
-
-        public void insertTable(string name, object row)
+       
+        Dictionary<EntityType, List<IEntity>> databaseDictionary = new Dictionary<EntityType, List<IEntity>>()
         {
-            switch (name)
-            {
-                case "product":
-                    productTable.Add((Product)row);
-                    break;
-                case "category":
-                    categotyTable.Add((Category)row);
-                    break;
-                case "accessory":
-                    accessoryTable.Add((Accessotion)row);
-                    break;
-            }
+            {EntityType.Product, new List<IEntity>() {} },
+            {EntityType.Category, new List<IEntity>() {} },
+            {EntityType.Accessory, new List<IEntity>() {} }
+        };
+
+
+        public int insertTable(EntityType entityType, IEntity row)
+        {
+
+            databaseDictionary[entityType].Add(row);
+            //Console.WriteLine($"Chen thanh cong {row.Id}");
+            return row.Id;
         }
-        public List<IEntity> selectTable(string name, object where)
+        public List<IEntity> selectTable(EntityType entityType)
         {
-            List<IEntity> entities = new List<IEntity>();
-            switch (name)
-            {
-                case "product":
-
-                    foreach (IEntity entity in productTable)
-                    {
-                        entities.Add(entity);
-                    }
-                    Console.WriteLine("da lay bang product");
-                    break;
-                case "category":
-                    foreach (IEntity entity in categotyTable)
-                    {
-                        entities.Add(entity);
-
-                    }
-                    Console.WriteLine("da lay bang category");
-                    break;
-                case "accessory":
-                    foreach (IEntity entity in accessoryTable)
-                    {
-                        entities.Add(entity);
-
-                    }
-                    Console.WriteLine("da lay bang accessory");
-                    break;
-            }
-            return entities;
+            return databaseDictionary[entityType];
         }
-        public void updateTable(string name, object row)
+        public int updateTable(EntityType entityType, IEntity row)
         {
-            switch (name)
+            for (int i= 0; i< databaseDictionary[entityType].Count-1; i++)
             {
-                case "product":
-                    Product tableProduct = row as Product;
-                    for (int i = 0; i < productTable.Count - 1; i++)
-                    {
-                        if (productTable[i].id == tableProduct.id)
-                        {
-                            productTable[i] = tableProduct;
-                        }
-                    }
-                    break;
-                case "category":
-                    Category tableCategory = row as Category;
-                    for (int i = 0; i < categotyTable.Count - 1; i++)
-                    {
-                        if (categotyTable[i].id == tableCategory.id)
-                        {
-                            categotyTable[i] = tableCategory;
-                        }
-                    }
-                    break;
-                case "accessory":
+                if (databaseDictionary[entityType][i].Id == row.Id )
+                {
+                    databaseDictionary[entityType][i] = row;
+                    Console.WriteLine($"Update thanh cong {row.Id}");
 
-                    Accessotion tableAccess = row as Accessotion;
-                    for (int i = 0; i < productTable.Count - 1; i++)
-                    {
-                        if (accessoryTable[i].id == tableAccess.id)
-                        {
-                            accessoryTable[i] = tableAccess;
-                        }
-                    }
-                    break;
+                }
             }
+            return row.Id;
         }
-        public void deleteTable(string name, object row)
+        public void deleteTable(EntityType entityType, int id)
         {
-            switch (name)
+            List<IEntity> table = databaseDictionary[entityType];
+            for (int i= 0;i<table.Count-1;i++)
             {
-                case "product":
-
-                    Product tableProduct = row as Product;
-                    for (int i = 0; i < productTable.Count - 1; i++)
-                    {
-                        if (productTable[i].id == tableProduct.id)
-                        {
-                            productTable.RemoveAt(i);
-                        }
-                    }
-                    break;
-                case "category":
-                    Category tableCategory = row as Category;
-                    for (int i = 0; i < categotyTable.Count - 1; i++)
-                    {
-                        if (categotyTable[i].id == tableCategory.id)
-                        {
-                            categotyTable.RemoveAt(i);
-                        }
-                    }
-                    break;
-                case "accessory":
-                    Accessotion tableAccess = row as Accessotion;
-                    for (int i = 0; i < productTable.Count - 1; i++)
-                    {
-                        if (accessoryTable[i].id == tableAccess.id)
-                        {
-                            accessoryTable.RemoveAt(i);
-                        }
-                    }
-                    break;
+                if (table[i].Id == id)
+                {
+                    databaseDictionary[entityType].Remove(databaseDictionary[entityType][i]);
+                }
             }
 
+
+            
         }
-        public void truncateTable(string name)
+        public void truncateTable(EntityType entityType)
         {
-            switch (name)
+            databaseDictionary[entityType].Clear();
+        }
+
+        public void updateTableById(EntityType entityType, int id, IEntity row)
+        {
+            List<IEntity> table = databaseDictionary[entityType];
+            for (int i = 0; i < table.Count - 1; i++)
             {
-                case "product":
-                    productTable.Clear();
-                    break;
-                case "category":
-                    categotyTable.Clear();
-                    break;
-                case "accessory":
-                    accessoryTable.Clear();
-                    break;
+                if (table[i].Id == id)
+                {
+                    databaseDictionary[entityType][i] = row;
+                }
             }
         }
     }

@@ -2,12 +2,11 @@
 {
     internal class Category : IEntity
     {
-        public int id;
-        public string name;
-        public int getId()
-        {
-            return id;
-        }
-        public void setId(int id) { }
+        private int id;
+        private string name;
+
+        public int Id { get { return id; } set { id = value; } }
+        public string Name { get { return name; } set { name = value; } }
+
     }
 }
