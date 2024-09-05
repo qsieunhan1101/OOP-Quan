@@ -21,16 +21,16 @@ namespace OOP_Quan.Demo
             selectTableTest(EntityType.Product, databaseTest);
             updateTableTest(EntityType.Product, databaseTest, new Product(3, "new prpo", 136));
 
-            //deleteTableTest(EntityType.Product, databaseTest, 2);
+            deleteTableTest(EntityType.Product, databaseTest, 2);
 
             //truncateTableTest(EntityType.Product, databaseTest);
 
             updateTableByIdTest(EntityType.Product,databaseTest, 3, new Product(100, "new--------", 1000));
         }
 
-        static void insertTableTest(Product p, Database database)
+        static void insertTableTest(IEntity p, Database database, EntityType entityType)
         {
-            database.insertTable(EntityType.Product, p);
+            database.insertTable(entityType, p);
 
             printTableTest(p);
         }
@@ -70,11 +70,28 @@ namespace OOP_Quan.Demo
         }
         static void initDatabase(Database database)
         {
+            Console.WriteLine("Product Table");
             for (int i = 0; i < 10; i++)
             {
                 Product p = new Product(i, $"Produc {i}", i + 1);
-                insertTableTest(p, database);
+                insertTableTest(p, database, EntityType.Product);
             }
+            Console.WriteLine("Category Table");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Category c = new Category(i, $"Category {i}");
+                insertTableTest(c, database, EntityType.Category);
+            }
+
+            Console.WriteLine("Accessotion Table");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Accessotion a = new Accessotion(i, $"Produc {i}");
+                insertTableTest(a, database, EntityType.Accessory);
+            }
+
 
         }
 

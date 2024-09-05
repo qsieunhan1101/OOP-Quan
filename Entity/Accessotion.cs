@@ -9,5 +9,11 @@
         public string Name { get { return name; } set { name = value; } }
 
 
+        public Accessotion(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
     }
 }

@@ -45,7 +45,12 @@
   <ItemGroup>
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\Database.cs" />
+    <Compile Include="Dao\EntityDao.cs" />
+    <Compile Include="Dao\ProductDao.cs" />
+    <None Include="Demo\CategoryDaoDemo.cs" />
     <Compile Include="Demo\DatabaseDemo.cs" />
+    <None Include="Demo\EntityDaoDemo.cs" />
+    <None Include="Demo\ProductDaoDemo.cs" />
     <Compile Include="Demo\ProductDemo.cs" />
     <Compile Include="Entity\Accessotion.cs" />
     <Compile Include="Entity\Category.cs" />

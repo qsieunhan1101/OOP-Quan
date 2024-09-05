@@ -29,7 +29,7 @@ namespace OOP_Quan.Dao
         }
         public int updateTable(EntityType entityType, IEntity row)
         {
-            for (int i= 0; i< databaseDictionary[entityType].Count-1; i++)
+            for (int i= 0; i< databaseDictionary[entityType].Count; i++)
             {
                 if (databaseDictionary[entityType][i].Id == row.Id )
                 {
@@ -43,7 +43,7 @@ namespace OOP_Quan.Dao
         public void deleteTable(EntityType entityType, int id)
         {
             List<IEntity> table = databaseDictionary[entityType];
-            for (int i= 0;i<table.Count-1;i++)
+            for (int i= 0;i<table.Count;i++)
             {
                 if (table[i].Id == id)
                 {
@@ -70,5 +70,20 @@ namespace OOP_Quan.Dao
                 }
             }
         }
+
+        public IEntity getIEntityById(EntityType entityType,int id) 
+        {
+            List<IEntity> table = databaseDictionary[entityType];
+            for (int i = 0; i<table.Count-1; i++)
+            {
+                if (table[i].Id == id)
+                {
+                    return databaseDictionary[entityType][i];
+                }
+
+            }
+            return null;
+        }
+
     }
 }
