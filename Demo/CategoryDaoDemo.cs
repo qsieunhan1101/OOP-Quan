@@ -6,63 +6,56 @@ using System.Collections.Generic;
 
 namespace OOP_Quan.Demo
 {
-    internal class CategoryDaoDemo
+    internal class CategoryDaoDemo : BaseDaoDemo
     {
         public static void Main(string[] args)
         {
-            BaseDao BaseDao = new CategoryDao();
-            initCategoryTable(BaseDao);
-            insertTest(BaseDao, EntityType.Category, new Category(19, "categogogogo"));
-            List<BaseRow> d = BaseDao.findAll(EntityType.Category);
-            updateTest(BaseDao, EntityType.Category, new Category(19, "asdawwff"));
+            EntityType name = EntityType.Category;
+
+            CategoryDaoDemo categoryDaoDemo = new CategoryDaoDemo();
+            CategoryDao categoryDao = new CategoryDao();
+            Console.WriteLine($"-----------Khoi tao bang {name}");
+            categoryDaoDemo.initCategoryTable(name, categoryDao);
+            categoryDaoDemo.printTable(categoryDao, name);
+
+            Console.WriteLine($"-------------Chen phan tu moi vao bang {name}");
+            categoryDaoDemo.insertTest(categoryDao, name, new Category(19, "categogogogo"));
+            categoryDaoDemo.printTable(categoryDao, name);
 
 
-            deleteTest(BaseDao, EntityType.Category, new Category(19, "asdawwff"));
+            Console.WriteLine($"-------------Update bang {name}");
+            categoryDaoDemo.updateTest(categoryDao, name, new Category(3, "asdawwff"));
 
-        }
+            Console.WriteLine($"--------------Xoa phan tu trong bang {name}");
 
-        static void insertTest(BaseDao BaseDao, EntityType entityType, BaseRow row)
-        {
-            BaseDao.insert(entityType, row);
-
-
-        }
-        static void updateTest(BaseDao BaseDao, EntityType entityType, BaseRow row)
-        {
-            BaseDao.update(entityType, row);
-            printTable(BaseDao, EntityType.Category);
-
-        }
-        static void deleteTest(BaseDao BaseDao, EntityType entityType, BaseRow row)
-        {
-            BaseDao.delete(entityType, row);
-            printTable(BaseDao, EntityType.Category);
-        }
+            categoryDaoDemo.deleteTest(categoryDao, name, new Category(19, "categogogogo"));
 
 
-        static void printTable(BaseDao BaseDao, EntityType entityType)
-        {
-            List<BaseRow> cate = BaseDao.findAll(entityType);
-            for (int i = 0; i < cate.Count; i++)
-            {
-                printTableTest(cate[i]);
-            }
-        }
-        static void printTableTest(BaseRow row)
-        {
-            Console.Write("Id:" + row.Id);
-            Console.Write(" Name:" + row.Name);
+            Console.WriteLine("--------------------Test FindbyNAme");
+            BaseRow fbname = categoryDao.findByName("Category 2");
+            Console.Write("Id:" + fbname.Id);
+            Console.Write(" Name:" + fbname.Name);
             Console.Write("   ");
             Console.Write("\n");
-        }
 
-        static void initCategoryTable(BaseDao BaseDao)
-        {
-            for (int i = 0; i < 6; i++)
+
+
+
+            Console.WriteLine("--------------------Test Search");
+
+
+            List<BaseRow> listTag = categoryDao.search("Category");
+            for (int i = 0; i < listTag.Count; i++)
             {
-                Category cate = new Category(i, $"Category {i}");
-                insertTest(BaseDao, EntityType.Category, cate);
+                Console.Write("Id:" + listTag[i].Id);
+                Console.Write(" Name:" + listTag[i].Name);
+                Console.Write("   ");
+                Console.Write("\n");
+
             }
         }
+
+
+
     }
 }

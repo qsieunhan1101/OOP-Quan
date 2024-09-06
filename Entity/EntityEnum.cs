@@ -1,4 +1,6 @@
-﻿namespace OOP_Quan.Entity
+﻿using OOP_Quan.Dao;
+
+namespace OOP_Quan.Entity
 {
     internal class EntityEnum
     {

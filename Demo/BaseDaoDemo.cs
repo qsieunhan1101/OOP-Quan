@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OOP_Quan.Demo
 {
@@ -13,12 +14,11 @@ namespace OOP_Quan.Demo
         public void insertTest(BaseDao BaseDao, EntityType entityType, BaseRow row)
         {
             BaseDao.insert(entityType, row);
-
-
         }
         public void updateTest(BaseDao BaseDao, EntityType entityType, BaseRow row)
         {
             BaseDao.update(entityType, row);
+
             printTable(BaseDao, EntityType.Category);
 
         }
@@ -34,10 +34,10 @@ namespace OOP_Quan.Demo
             List<BaseRow> cate = BaseDao.findAll(entityType);
             for (int i = 0; i < cate.Count; i++)
             {
-                printTableTest(cate[i]);
+                printRow(cate[i]);
             }
         }
-        public void printTableTest(BaseRow row)
+        public void printRow(BaseRow row)
         {
             Console.Write("Id:" + row.Id);
             Console.Write(" Name:" + row.Name);
@@ -45,12 +45,12 @@ namespace OOP_Quan.Demo
             Console.Write("\n");
         }
 
-        public void initCategoryTable(BaseDao BaseDao)
+        public void initCategoryTable(EntityType entityType,BaseDao BaseDao)
         {
             for (int i = 0; i < 6; i++)
             {
                 Category cate = new Category(i, $"Category {i}");
-                insertTest(BaseDao, EntityType.Category, cate);
+                insertTest(BaseDao, entityType, cate);
             }
         }
     }

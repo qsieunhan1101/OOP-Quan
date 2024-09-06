@@ -9,13 +9,21 @@ namespace OOP_Quan.Dao
 {
     public abstract class BaseDao
     {
-        //protected Database Database.Instance = new Database();
        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityType">Ten table can tro den</param>
+        /// <param name="row">object muon them vao</param>
         public void insert(EntityType entityType, BaseRow row)
         {
             Database.Instance.insertTable(entityType, row);
-            
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityType"></param>
+        /// <param name="row"></param>
         public void update(EntityType entityType, BaseRow row)
         {
             Database.Instance.updateTable(entityType, row);
@@ -34,7 +42,6 @@ namespace OOP_Quan.Dao
             BaseRow c = Database.Instance.getIEntityById(entityType, id);
             if (c == null)
             {
-                Console.WriteLine("Can not find the Category");
                 return null;
             }
             return c;

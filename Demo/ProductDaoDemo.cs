@@ -10,16 +10,18 @@ namespace OOP_Quan.Demo
     {
         public static void Main(string[] args)
         {
+            EntityType name = EntityType.Product;
+
             ProductDaoDemo productDaoDemo = new ProductDaoDemo();
             BaseDao BaseDao = new ProductDao();
-            productDaoDemo.initCategoryTable(BaseDao);
+            productDaoDemo.initCategoryTable(name,BaseDao);
 
-            productDaoDemo.insertTest(BaseDao, EntityType.Category, new Category(19, "oooooooooooooooooooooooooooooooooooo"));
+            productDaoDemo.insertTest(BaseDao, name, new Category(19, "oooooooooooooooooooooooooooooooooooo"));
 
 
-            List<BaseRow> d = BaseDao.findAll(EntityType.Category);
-            productDaoDemo.updateTest(BaseDao, EntityType.Category, new Category(19, "ffffffffffffffffffffffffffffffffffffffffffff"));
-            productDaoDemo.deleteTest(BaseDao, EntityType.Category, new Category(2, "asdawwff"));
+            List<BaseRow> d = BaseDao.findAll(name);
+            productDaoDemo.updateTest(BaseDao, name, new Category(19, "ffffffffffffffffffffffffffffffffffffffffffff"));
+            productDaoDemo.deleteTest(BaseDao, name, new Category(2, "asdawwff"));
         }
     }
 }
