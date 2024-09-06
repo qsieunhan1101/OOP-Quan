@@ -7,7 +7,7 @@ namespace OOP_Quan
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public void Main(string[] args)
         {
             Database database = new Database();
             ProductDemo productDemo = new ProductDemo();

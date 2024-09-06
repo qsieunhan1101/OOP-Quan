@@ -6,7 +6,7 @@ namespace OOP_Quan.Demo
     internal class ProductDemo
     {
         
-/*        public static void Main(string[] args)
+/*        public public void Main(string[] args)
         {
             Product product = createProductTest();
             printProduct(product);

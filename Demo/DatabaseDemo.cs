@@ -9,7 +9,7 @@ namespace OOP_Quan.Demo
     internal class DatabaseDemo
     {
 
-        static void Main(string[] args)
+        public void Main(string[] args)
         {
             Database databaseTest = new Database();
 
@@ -28,15 +28,15 @@ namespace OOP_Quan.Demo
             updateTableByIdTest(EntityType.Product,databaseTest, 3, new Product(100, "new--------", 1000));
         }
 
-        static void insertTableTest(IEntity p, Database database, EntityType entityType)
+        public void insertTableTest(BaseRow p, Database database, EntityType entityType)
         {
             database.insertTable(entityType, p);
 
             printTableTest(p);
         }
-        static void selectTableTest(EntityType entityType, Database database)
+        public void selectTableTest(EntityType entityType, Database database)
         {
-            List<IEntity> listEntity = database.selectTable(entityType);
+            List<BaseRow> listEntity = database.selectTable(entityType);
             Console.WriteLine($"\nSElectTable {entityType.ToString()}");
             if (listEntity.Count <= 0)
             {
@@ -45,22 +45,22 @@ namespace OOP_Quan.Demo
             }
             for (int i = 0; i < listEntity.Count - 1; i++)
             {
-                printTableTest((IEntity)listEntity[i]);
+                printTableTest((BaseRow)listEntity[i]);
             }
         }
-        static void updateTableTest(EntityType entityType, Database database, IEntity row)
+        public void updateTableTest(EntityType entityType, Database database, BaseRow row)
         {
             database.updateTable(entityType, row);
             selectTableTest(entityType, database);
         }
-        static void deleteTableTest(EntityType entityType, Database database, int id)
+        public void deleteTableTest(EntityType entityType, Database database, int id)
         {
             database.deleteTable(entityType, id);
             Console.Write($"------deleteTableTest");
 
             selectTableTest(entityType, database);
         }
-        static void truncateTableTest(EntityType entityType, Database database)
+        public void truncateTableTest(EntityType entityType, Database database)
         {
             database.truncateTable(entityType);
             Console.WriteLine($"\nXoa thanh cong table");
@@ -68,7 +68,7 @@ namespace OOP_Quan.Demo
             selectTableTest(entityType, database);
 
         }
-        static void initDatabase(Database database)
+        public void initDatabase(Database database)
         {
             Console.WriteLine("Product Table");
             for (int i = 0; i < 10; i++)
@@ -95,7 +95,7 @@ namespace OOP_Quan.Demo
 
         }
 
-        static void updateTableByIdTest(EntityType entityType, Database database, int id, IEntity row)
+        public void updateTableByIdTest(EntityType entityType, Database database, int id, BaseRow row)
         {
             database.updateTableById(entityType, id, row);
             Console.WriteLine($"\nCap nhat by ID thanh cong");
@@ -110,7 +110,7 @@ namespace OOP_Quan.Demo
 
 
 
-        static void printTableTest(IEntity row)
+        public void printTableTest(BaseRow row)
         {
             Console.Write("Id:" + row.Id);
             Console.Write(" Name:" + row.Name);

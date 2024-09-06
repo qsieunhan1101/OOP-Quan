@@ -43,20 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AccessoryDao.cs" />
+    <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\Database.cs" />
-    <Compile Include="Dao\EntityDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
+    <Compile Include="Demo\BaseDaoDemo.cs" />
     <None Include="Demo\CategoryDaoDemo.cs" />
-    <Compile Include="Demo\DatabaseDemo.cs" />
-    <None Include="Demo\EntityDaoDemo.cs" />
-    <None Include="Demo\ProductDaoDemo.cs" />
+    <None Include="Demo\DatabaseDemo.cs" />
+    <Compile Include="Demo\ProductDaoDemo.cs" />
     <Compile Include="Demo\ProductDemo.cs" />
     <Compile Include="Entity\Accessotion.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\EntityEnum.cs" />
     <Compile Include="Entity\Product.cs" />
-    <Compile Include="IEntity.cs" />
+    <Compile Include="Entity\BaseRow.cs" />
     <None Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
