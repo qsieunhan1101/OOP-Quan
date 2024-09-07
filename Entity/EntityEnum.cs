@@ -2,9 +2,6 @@
 
 namespace OOP_Quan.Entity
 {
-    internal class EntityEnum
-    {
-    }
     public enum EntityType
     {
         Product = 0,
